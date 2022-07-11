@@ -7,5 +7,6 @@
   "editor.formatOnSave": true,
   "python.testing.pytestArgs": ["src"],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "python.analysis.typeCheckingMode": "strict"
 }
