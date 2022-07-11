@@ -1,5 +1,4 @@
-from pyspark import Row
-from core import PersonsDSL, count_lines, say_hello
+from core import Person, PersonsDSL, count_lines, say_hello
 
 from datetime import datetime, date
 from pyspark.sql import SparkSession
@@ -10,29 +9,88 @@ def test_hello_world():
     assert say_hello("Bob") == "Hello World! Bob"
 
 
-def test_person_domain_specific_language():
+def test_count_female_persons():
     spark = SparkSession.builder.getOrCreate()
 
-    df = spark.createDataFrame(
+    persons = spark.createDataFrame(
         [
             Row(
                 name="Alice",
                 gender="female",
+                age=22,
             ),
             Row(
                 name="Bob",
                 gender="male",
+                age=20,
             ),
             Row(
                 name="Carol",
                 gender="female",
+                age=23,
             ),
         ]
     )
 
-    persons = PersonsDSL(df).females().gender()
+    total = PersonsDSL[Person](persons).females().count()
 
-    assert persons.count() == 2
+    assert total == 2
+
+
+def test_find_first_people_named_alice():
+    spark = SparkSession.builder.getOrCreate()
+
+    persons = spark.createDataFrame(
+        [
+            Row(
+                name="Alice",
+                gender="female",
+                age=22,
+            ),
+            Row(
+                name="Bob",
+                gender="male",
+                age=20,
+            ),
+            Row(
+                name="Carol",
+                gender="female",
+                age=23,
+            ),
+        ]
+    )
+
+    alices = PersonsDSL[Person](persons).named("Alice").gender().df.collect()[0]
+
+    assert alices == Row(gender="female")
+
+
+def test_calculate_average_age():
+    spark = SparkSession.builder.getOrCreate()
+
+    persons = spark.createDataFrame(
+        [
+            Row(
+                name="Alice",
+                gender="female",
+                age=22,
+            ),
+            Row(
+                name="Bob",
+                gender="male",
+                age=20,
+            ),
+            Row(
+                name="Carol",
+                gender="female",
+                age=23,
+            ),
+        ]
+    )
+
+    average_age = PersonsDSL[Person](persons).average_age()
+
+    assert average_age == 21.666666666666668
 
 
 def test_count_lines():
