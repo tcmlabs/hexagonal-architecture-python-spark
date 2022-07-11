@@ -1,5 +1,5 @@
 from pyspark import Row
-from main import count_lines, say_hello
+from core import count_lines, say_hello
 
 from datetime import datetime, date
 from pyspark.sql import SparkSession
