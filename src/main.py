@@ -1,3 +1,7 @@
+def count_lines(df):
+    return df.count()
+
+
 def say_hello(content):
     return f"Hello World! {content}"
 
