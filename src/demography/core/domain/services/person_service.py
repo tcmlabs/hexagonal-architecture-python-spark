@@ -1,33 +1,11 @@
 from __future__ import annotations
 
-from typing import Generic, Literal, TypeVar, TypedDict
+from typing import Generic, TypeVar
+
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.functions import col, avg
 
-
-def say_hello(content: str):
-    return f"Hello World! {content}"
-
-
-def count_lines(df: DataFrame):
-    return df.count()
-
-
-class Named(TypedDict):
-    name: str
-
-
-class Gendered(TypedDict):
-    gender: Literal["male", "female"]
-
-
-class Aged(TypedDict):
-    age: int
-
-
-class Person(Named, Gendered, Aged):
-    pass
-
+from demography.core.domain.person_type import Gendered, Named, Aged
 
 T = TypeVar("T", covariant=True)
 
