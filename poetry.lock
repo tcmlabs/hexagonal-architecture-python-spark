@@ -70,6 +70,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "findspark"
+version = "2.0.1"
+description = "Find pyspark to make it importable."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "iniconfig"
 version = "1.1.1"
 description = "iniconfig: brain-dead simple config-ini parsing"
@@ -194,6 +202,18 @@ tomli = ">=1.0.0"
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "pygments (>=2.7.2)", "requests", "xmlschema"]
 
 [[package]]
+name = "pytest-spark"
+version = "0.6.0"
+description = "pytest plugin to run the tests with support of pyspark."
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+findspark = "*"
+pytest = "*"
+
+[[package]]
 name = "pytest-watch"
 version = "4.2.0"
 description = "Local continuous test runner with pytest and watchdog."
@@ -237,7 +257,7 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "84e0209733d49832a047e81437ed4d08274f777934a3f5814282828efbc87b8f"
+content-hash = "8b87ebea17cf625e72e280a4f219dfc7a5722fe420b9beeb77e0460c83df34f0"
 
 [metadata.files]
 atomicwrites = [
@@ -283,6 +303,10 @@ colorama = [
 docopt = [
     {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
 ]
+findspark = [
+    {file = "findspark-2.0.1-py2.py3-none-any.whl", hash = "sha256:e5d5415ff8ced6b173b801e12fc90c1eefca1fb6bf9c19c4fc1f235d4222e753"},
+    {file = "findspark-2.0.1.tar.gz", hash = "sha256:aa10a96cb616cab329181d72e8ef13d2dc453b4babd02b5482471a0882c1195e"},
+]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
@@ -325,6 +349,10 @@ pyspark = [
 pytest = [
     {file = "pytest-7.1.2-py3-none-any.whl", hash = "sha256:13d0e3ccfc2b6e26be000cb6568c832ba67ba32e719443bfe725814d3c42433c"},
     {file = "pytest-7.1.2.tar.gz", hash = "sha256:a06a0425453864a270bc45e71f783330a7428defb4230fb5e6a731fde06ecd45"},
+]
+pytest-spark = [
+    {file = "pytest-spark-0.6.0.tar.gz", hash = "sha256:06e3fbfa2e7fa69d2976c10037c9ee3549c80580228bde5b9aa602f44b711f17"},
+    {file = "pytest_spark-0.6.0-py3-none-any.whl", hash = "sha256:cabfbcfca6a4876c5e03b151ba9217f3888fe5142154c1e885dd7902afa85a89"},
 ]
 pytest-watch = [
     {file = "pytest-watch-4.2.0.tar.gz", hash = "sha256:06136f03d5b361718b8d0d234042f7b2f203910d8568f63df2f866b547b3d4b9"},

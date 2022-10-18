@@ -13,6 +13,7 @@ pyspark = "^3.3.0"
 black = "^22.6.0"
 pytest = "^7.1.2"
 pytest-watch = "^4.2.0"
+pytest-spark = "^0.6.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

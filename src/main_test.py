@@ -9,10 +9,8 @@ def test_hello_world():
     assert say_hello("Bob") == "Hello World! Bob"
 
 
-def test_count_female_persons():
-    spark = SparkSession.builder.getOrCreate()
-
-    persons = spark.createDataFrame(
+def test_count_female_persons(spark_session: SparkSession):
+    persons = spark_session.createDataFrame(
         [
             Row(
                 name="Alice",
@@ -37,10 +35,8 @@ def test_count_female_persons():
     assert total == 2
 
 
-def test_find_first_people_named_alice():
-    spark = SparkSession.builder.getOrCreate()
-
-    persons = spark.createDataFrame(
+def test_find_first_people_named_alice(spark_session: SparkSession):
+    persons = spark_session.createDataFrame(
         [
             Row(
                 name="Alice",
@@ -65,10 +61,8 @@ def test_find_first_people_named_alice():
     assert alices == Row(gender="female")
 
 
-def test_calculate_average_age():
-    spark = SparkSession.builder.getOrCreate()
-
-    persons = spark.createDataFrame(
+def test_calculate_average_age(spark_session: SparkSession):
+    persons = spark_session.createDataFrame(
         [
             Row(
                 name="Alice",
@@ -93,10 +87,8 @@ def test_calculate_average_age():
     assert average_age == 21.666666666666668
 
 
-def test_count_lines():
-    spark = SparkSession.builder.getOrCreate()
-
-    df = spark.createDataFrame(
+def test_count_lines(spark_session: SparkSession):
+    df = spark_session.createDataFrame(
         [
             Row(
                 a=1,
