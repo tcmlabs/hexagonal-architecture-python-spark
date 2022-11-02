@@ -1,7 +1,7 @@
 from pyspark.sql import Row
 from pyspark.sql import SparkSession
 
-from demography.core.ports.secondary import PersonRepository
+from demography.core.ports.secondary.person_repository import PersonRepository
 
 from demography.core.domain.services.person_service import PersonsDSL
 from demography.core.domain.person_type import Person
