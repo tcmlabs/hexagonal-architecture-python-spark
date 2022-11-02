@@ -4,7 +4,9 @@ from pyspark.sql import SparkSession
 from pyspark.sql import Row
 
 from demography.core.sample import count_lines, say_hello
-from demography.secondary_adapters.person_repository import InMemoryPersonRepository
+from demography.secondary_adapters.repositories.person.in_memory_person_repository import (
+    InMemoryPersonRepository,
+)
 
 
 def test_hello_world():
