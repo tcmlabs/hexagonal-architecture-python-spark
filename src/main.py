@@ -1,6 +1,5 @@
-from demography.core.sample import say_hello
+from demography.primary_adapters.cli.main import run_person_application
 
 if __name__ == "__main__":
-    text = say_hello("Bob")
-
-    print(text)
+    result = run_person_application()
+    print(result)

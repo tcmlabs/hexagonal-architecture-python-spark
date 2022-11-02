@@ -4,6 +4,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql import Row
 
 from demography.core.sample import count_lines, say_hello
+from demography.core.use_cases.average_age import AverageAgeUseCase
 from demography.secondary_adapters.repositories.person.in_memory_person_repository import (
     InMemoryPersonRepository,
 )
@@ -27,14 +28,6 @@ def test_find_first_people_named_alice(spark_session: SparkSession):
     alices = repository.find_all_persons().named("Alice").gender().df.collect()[0]
 
     assert alices == Row(gender="female")
-
-
-def test_calculate_average_age(spark_session: SparkSession):
-    repository = InMemoryPersonRepository(spark_session)
-
-    average_age = repository.find_all_persons().average_age()
-
-    assert average_age == 21.666666666666668
 
 
 def test_count_lines(spark_session: SparkSession):
