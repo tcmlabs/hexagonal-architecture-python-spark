@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from demography.core.ports.primary.average_age_command import AverageAgeCommand
 
 from demography.secondary_adapters.repositories.person.file_system_person_repository import (
     FileSystemPersonRepository,
@@ -15,6 +16,6 @@ def run_person_application():
     use_case = AverageAgeUseCase(person_repository)
 
     # Run use case
-    average_age = use_case.run()
+    average_age = use_case.run(AverageAgeCommand(should_round=True))
 
     return average_age
