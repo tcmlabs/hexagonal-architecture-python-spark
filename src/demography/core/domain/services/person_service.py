@@ -11,6 +11,8 @@ T = TypeVar("T", covariant=True)
 
 
 class PersonsDSL(Generic[T]):
+    # A final encoding domain-specific language
+    # Such DSL is expressed in terms of its concrete implementation.
     df: DataFrame
 
     def __init__(self, df: DataFrame):
