@@ -27,7 +27,7 @@ class InMemoryMovieRepository(MovieRepository):
                 ),
                 Row(
                     name="Strange Universe",
-                    budget=200_000_000,
+                    budget=205_000_000,
                 ),
             ]
         )
