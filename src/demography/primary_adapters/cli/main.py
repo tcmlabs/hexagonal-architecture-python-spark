@@ -1,21 +1,24 @@
 from pyspark.sql import SparkSession
-from demography.core.ports.primary.average_age_command import AverageAgeCommand
-
-from demography.secondary_adapters.repositories.person.file_system_person_repository import (
-    FileSystemPersonRepository,
+from demography.core.ports.primary.most_expensive_movie_command import (
+    MostExpensiveMoviesCommand,
 )
 
-from demography.core.use_cases.average_age import AverageAgeUseCase
+
+from demography.secondary_adapters.repositories.movie.in_memory_movie_repository import (
+    InMemoryMovieRepository,
+)
+
+from demography.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
 
 
-def run_person_application():
+def run_movie_application():
     # Wire-up dependencies
     spark = SparkSession.builder.appName("Python Spark SQL basic example").getOrCreate()
 
-    person_repository = FileSystemPersonRepository(spark)
-    use_case = AverageAgeUseCase(person_repository)
+    movie_repository = InMemoryMovieRepository(spark)
+    use_case = MostExpensiveMoviesUseCase(movie_repository)
 
     # Run use case
-    average_age = use_case.run(AverageAgeCommand(should_round=True))
+    top_two_most_expensive_movies = use_case.run(MostExpensiveMoviesCommand(count=2))
 
-    return average_age
+    return top_two_most_expensive_movies
