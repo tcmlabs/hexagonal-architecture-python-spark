@@ -1,8 +1,8 @@
-from demography.core.ports.primary.use_cases import UseCase
-from demography.core.ports.primary.average_movie_budget_command import (
+from cinema.core.ports.primary.use_cases import UseCase
+from cinema.core.ports.primary.average_movie_budget_command import (
     AverageMovieBudgetCommand,
 )
-from demography.core.ports.secondary.movie_repository import MovieRepository
+from cinema.core.ports.secondary.movie_repository import MovieRepository
 
 
 class AverageMovieBudgetUseCase(UseCase[AverageMovieBudgetCommand, float]):

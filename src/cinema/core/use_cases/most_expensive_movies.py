@@ -1,10 +1,10 @@
 from typing import List
-from demography.core.ports.primary.use_cases import UseCase
-from demography.core.ports.primary.most_expensive_movie_command import (
+from cinema.core.ports.primary.use_cases import UseCase
+from cinema.core.ports.primary.most_expensive_movie_command import (
     MostExpensiveMoviesCommand,
 )
-from demography.core.ports.secondary.movie_repository import MovieRepository
-from demography.core.domain.movie_type import Movie
+from cinema.core.ports.secondary.movie_repository import MovieRepository
+from cinema.core.domain.movie_type import Movie
 
 
 class MostExpensiveMoviesUseCase(UseCase[MostExpensiveMoviesCommand, List[Movie]]):

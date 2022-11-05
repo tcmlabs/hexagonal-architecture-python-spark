@@ -1,8 +1,8 @@
 from pyspark.sql import SparkSession
-from demography.core.ports.primary.count_movie_command import CountMovieCommand
+from cinema.core.ports.primary.count_movie_command import CountMovieCommand
 
-from demography.core.use_cases.count_movie_use_case import CountMovieUseCase
-from demography.secondary_adapters.repositories.movie.in_memory_movie_repository import (
+from cinema.core.use_cases.count_movie_use_case import CountMovieUseCase
+from cinema.secondary_adapters.repositories.movie.in_memory_movie_repository import (
     InMemoryMovieRepository,
 )
 

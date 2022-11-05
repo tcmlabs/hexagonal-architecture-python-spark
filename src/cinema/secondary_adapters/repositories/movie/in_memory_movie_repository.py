@@ -1,10 +1,10 @@
 from pyspark.sql import Row
 from pyspark.sql import SparkSession
 
-from demography.core.ports.secondary.movie_repository import MovieRepository
+from cinema.core.ports.secondary.movie_repository import MovieRepository
 
-from demography.core.domain.services.movie_service import MovieDSL
-from demography.core.domain.movie_type import Movie
+from cinema.core.domain.services.movie_service import MovieDSL
+from cinema.core.domain.movie_type import Movie
 
 
 class InMemoryMovieRepository(MovieRepository):

@@ -5,7 +5,7 @@ from typing import Generic, List, TypeVar
 from pyspark.sql.dataframe import DataFrame
 from pyspark.sql.functions import col, avg
 
-from demography.core.domain.movie_type import Movie, WithBudget, WithName
+from cinema.core.domain.movie_type import Movie, WithBudget, WithName
 
 T = TypeVar("T", covariant=True)
 

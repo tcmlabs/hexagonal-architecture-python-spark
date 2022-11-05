@@ -1,11 +1,11 @@
 from pyspark.sql import SparkSession
-from demography.core.domain.movie_type import Movie
-from demography.core.ports.primary.most_expensive_movie_command import (
+from cinema.core.domain.movie_type import Movie
+from cinema.core.ports.primary.most_expensive_movie_command import (
     MostExpensiveMoviesCommand,
 )
 
-from demography.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
-from demography.secondary_adapters.repositories.movie.in_memory_movie_repository import (
+from cinema.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
+from cinema.secondary_adapters.repositories.movie.in_memory_movie_repository import (
     InMemoryMovieRepository,
 )
 

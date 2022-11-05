@@ -1,8 +1,8 @@
 from abc import abstractmethod
 from typing import Protocol
 
-from demography.core.domain.services.movie_service import MovieDSL
-from demography.core.domain.movie_type import Movie
+from cinema.core.domain.services.movie_service import MovieDSL
+from cinema.core.domain.movie_type import Movie
 
 
 class MovieRepository(Protocol):

@@ -1,14 +1,14 @@
 from pyspark.sql import SparkSession
-from demography.core.ports.primary.most_expensive_movie_command import (
+from cinema.core.ports.primary.most_expensive_movie_command import (
     MostExpensiveMoviesCommand,
 )
 
 
-from demography.secondary_adapters.repositories.movie.in_memory_movie_repository import (
+from cinema.secondary_adapters.repositories.movie.in_memory_movie_repository import (
     InMemoryMovieRepository,
 )
 
-from demography.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
+from cinema.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
 
 
 def run_movie_application():

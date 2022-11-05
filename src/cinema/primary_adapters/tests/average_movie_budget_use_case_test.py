@@ -1,9 +1,9 @@
 from pyspark.sql import SparkSession
-from demography.core.ports.primary.average_movie_budget_command import (
+from cinema.core.ports.primary.average_movie_budget_command import (
     AverageMovieBudgetCommand,
 )
-from demography.core.use_cases.average_budget_use_case import AverageMovieBudgetUseCase
-from demography.secondary_adapters.repositories.movie.in_memory_movie_repository import (
+from cinema.core.use_cases.average_budget_use_case import AverageMovieBudgetUseCase
+from cinema.secondary_adapters.repositories.movie.in_memory_movie_repository import (
     InMemoryMovieRepository,
 )
 

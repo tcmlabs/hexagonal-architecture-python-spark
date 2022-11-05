@@ -1,8 +1,8 @@
-from demography.core.ports.primary.use_cases import UseCase
-from demography.core.ports.primary.count_movie_command import (
+from cinema.core.ports.primary.use_cases import UseCase
+from cinema.core.ports.primary.count_movie_command import (
     CountMovieCommand,
 )
-from demography.core.ports.secondary.movie_repository import MovieRepository
+from cinema.core.ports.secondary.movie_repository import MovieRepository
 
 
 class CountMovieUseCase(UseCase[CountMovieCommand, int]):
