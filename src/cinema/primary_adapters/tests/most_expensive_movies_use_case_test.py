@@ -36,5 +36,5 @@ class TestMostExpensiveMoviesUseCase:
 
         [movie] = most_expensive_movies_use_case.run(most_expensive_movie_ever_command)
 
-        assert movie.get("name") == "Pirates of the Caribbean: On Stranger Tides"
-        assert movie.get("budget") == 380_000_000
+        assert movie.name == "Pirates of the Caribbean: On Stranger Tides"
+        assert movie.budget == 380_000_000

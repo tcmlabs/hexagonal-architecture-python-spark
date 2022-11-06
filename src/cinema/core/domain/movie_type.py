@@ -1,13 +1,16 @@
-from typing import TypedDict
+from dataclasses import dataclass
+from typing import Protocol
 
 
-class WithName(TypedDict):
+class WithName(Protocol):
     name: str
 
 
-class WithBudget(TypedDict):
+class WithBudget(Protocol):
     budget: int
 
 
+@dataclass
 class Movie(WithName, WithBudget):
-    pass
+    name: str
+    budget: int

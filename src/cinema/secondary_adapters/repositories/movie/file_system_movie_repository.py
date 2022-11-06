@@ -43,14 +43,18 @@ class FileSystemMovieRepository(MovieRepository):
         self._spark = spark
 
     def find_all_movies(self) -> MovieDSL[Movie]:
-        movies = self._spark.read.csv(
-            "data/kaggle_movies_dataset/movies_metadata.csv",
-            # See: https://spark.apache.org/docs/latest/sql-data-sources-csv.html#data-source-option
-            schema=movies_metadata_raw_csv_schema,
-            header=True,
-            inferSchema=False,
-            mode="PERMISSIVE",  # stricter: FAILFAST
-            sep=",",
-        ).withColumnRenamed("original_title", "name")
+        movies = (
+            self._spark.read.csv(
+                "data/kaggle_movies_dataset/movies_metadata.csv",
+                # See: https://spark.apache.org/docs/latest/sql-data-sources-csv.html#data-source-option
+                schema=movies_metadata_raw_csv_schema,
+                header=True,
+                inferSchema=False,
+                mode="PERMISSIVE",  # stricter: FAILFAST
+                sep=",",
+            )
+            .withColumnRenamed("original_title", "name")
+            .select("name", "budget")
+        )
 
         return MovieDSL[Movie](movies)
