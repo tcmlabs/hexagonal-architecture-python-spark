@@ -36,7 +36,7 @@ movies_metadata_raw_csv_schema = (
 
 
 @final
-class FileSystemMovieRepository(MovieRepository):
+class KaggleFileSystemMovieRepository(MovieRepository):
     spark: SparkSession
 
     def __init__(self, spark: SparkSession) -> None:

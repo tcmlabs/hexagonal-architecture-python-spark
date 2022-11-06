@@ -3,8 +3,8 @@ from cinema.core.ports.primary.most_expensive_movie_command import (
     MostExpensiveMoviesCommand,
 )
 from cinema.core.use_cases.most_expensive_movies import MostExpensiveMoviesUseCase
-from cinema.secondary_adapters.repositories.movie.file_system_movie_repository import (
-    FileSystemMovieRepository,
+from cinema.secondary_adapters.repositories.movie.kaggle_movie_repository import (
+    KaggleFileSystemMovieRepository,
 )
 from cinema.secondary_adapters.repositories.movie.in_memory_movie_repository import (
     InMemoryMovieRepository,
@@ -29,7 +29,7 @@ class TestMostExpensiveMoviesUseCase:
         ]
 
     def test_most_expensive_movies_kaggle_dataset(self, spark_session: SparkSession):
-        movie_repository = FileSystemMovieRepository(spark_session)
+        movie_repository = KaggleFileSystemMovieRepository(spark_session)
         most_expensive_movies_use_case = MostExpensiveMoviesUseCase(movie_repository)
 
         most_expensive_movie_ever_command = MostExpensiveMoviesCommand(count=1)
