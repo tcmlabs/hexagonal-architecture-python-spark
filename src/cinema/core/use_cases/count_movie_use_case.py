@@ -1,7 +1,7 @@
+from cinema.core.domain.movie_type import Movie
+from cinema.core.domain.services.movie_domain_service import MovieDomainService
+from cinema.core.ports.primary.count_movie_command import CountMovieCommand
 from cinema.core.ports.primary.use_cases import UseCase
-from cinema.core.ports.primary.count_movie_command import (
-    CountMovieCommand,
-)
 from cinema.core.ports.secondary.movie_repository import MovieRepository
 
 
@@ -13,7 +13,8 @@ class CountMovieUseCase(UseCase[CountMovieCommand, int]):
 
     def run(self, command: CountMovieCommand):
         # TODO: find out why we need to type 'command' argument again
-        # NOTE: this could also be implemented with a 'domain service' instead of a DSL
-        average_movie_budget = self._movie_repository.find_all_movies().count()
+        movies = MovieDomainService[Movie](self._movie_repository.find_all_movies())
+
+        average_movie_budget = movies.count()
 
         return average_movie_budget

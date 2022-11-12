@@ -1,10 +1,5 @@
-from pyspark.sql import Row
-from pyspark.sql import SparkSession
-
 from cinema.core.ports.secondary.movie_repository import MovieRepository
-
-from cinema.core.domain.services.movie_service import MovieDSL
-from cinema.core.domain.movie_type import Movie
+from pyspark.sql import Row, SparkSession
 
 
 class InMemoryMovieRepository(MovieRepository):
@@ -14,7 +9,7 @@ class InMemoryMovieRepository(MovieRepository):
         super().__init__()
         self._spark = spark
 
-    def find_all_movies(self) -> MovieDSL[Movie]:
+    def find_all_movies(self):
         movies = self._spark.createDataFrame(
             [
                 Row(
@@ -32,4 +27,4 @@ class InMemoryMovieRepository(MovieRepository):
             ]
         )
 
-        return MovieDSL[Movie](movies)
+        return movies

@@ -1,7 +1,5 @@
 from typing import final
 
-from cinema.core.domain.movie_type import Movie
-from cinema.core.domain.services.movie_service import MovieDSL
 from cinema.core.ports.secondary.movie_repository import MovieRepository
 from pyspark.sql import SparkSession
 from pyspark.sql.types import DateType, FloatType, IntegerType, StringType, StructType
@@ -42,7 +40,7 @@ class KaggleFileSystemMovieRepository(MovieRepository):
     def __init__(self, spark: SparkSession) -> None:
         self._spark = spark
 
-    def find_all_movies(self) -> MovieDSL[Movie]:
+    def find_all_movies(self):
         movies = (
             self._spark.read.csv(
                 "data/kaggle_movies_dataset/movies_metadata.csv",
@@ -57,4 +55,4 @@ class KaggleFileSystemMovieRepository(MovieRepository):
             .select("name", "budget")
         )
 
-        return MovieDSL[Movie](movies)
+        return movies

@@ -1,11 +1,10 @@
 from abc import abstractmethod
 from typing import Protocol
 
-from cinema.core.domain.services.movie_service import MovieDSL
-from cinema.core.domain.movie_type import Movie
+from pyspark.sql.dataframe import DataFrame
 
 
 class MovieRepository(Protocol):
     @abstractmethod
-    def find_all_movies(self) -> MovieDSL[Movie]:
+    def find_all_movies(self) -> DataFrame:
         raise NotImplementedError()

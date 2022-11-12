@@ -1,10 +1,12 @@
 from typing import List
-from cinema.core.ports.primary.use_cases import UseCase
+
+from cinema.core.domain.movie_type import Movie
+from cinema.core.domain.services.movie_domain_service import MovieDomainService
 from cinema.core.ports.primary.most_expensive_movie_command import (
     MostExpensiveMoviesCommand,
 )
+from cinema.core.ports.primary.use_cases import UseCase
 from cinema.core.ports.secondary.movie_repository import MovieRepository
-from cinema.core.domain.movie_type import Movie
 
 
 class MostExpensiveMoviesUseCase(UseCase[MostExpensiveMoviesCommand, List[Movie]]):
@@ -15,11 +17,10 @@ class MostExpensiveMoviesUseCase(UseCase[MostExpensiveMoviesCommand, List[Movie]
 
     def run(self, command: MostExpensiveMoviesCommand):
         # TODO: find out why we need to type 'command' argument again
-        # NOTE: this could also be implemented with a 'domain service' instead of a DSL
-        most_expensive_movies = (
-            self._movie_repository.find_all_movies()
-            .most_expensive(count=command.count)
-            .dangerously_convert_to_list()
-        )
+        movies = MovieDomainService[Movie](self._movie_repository.find_all_movies())
+
+        most_expensive_movies = movies.most_expensive(
+            count=command.count
+        ).dangerously_convert_to_list()
 
         return most_expensive_movies
