@@ -20,7 +20,7 @@ This project shows how battle-tested software engineering architecture known to 
 
 ## Architecture, tests, feedback loop, code quality and environments
 
-Let's zoom into 5 very specific problems that your data engineering project may have:
+Let's zoom into 6 very specific problems that your data engineering project may have:
 
 ### Problem #1: "We don't know where and what the business rules are"
 
@@ -110,7 +110,7 @@ We believe that there's absolutely no difference between data, backend and front
 
 Lead maintainer:
 
-- Jean-Baptiste Musso // jeanbaptiste (at) tcmabs.fr
+- Jean-Baptiste Musso // jeanbaptiste (at) tcmlabs.fr
 
 ## Contributing
 
